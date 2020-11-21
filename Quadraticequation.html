@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>body {
+    background-color:#eeeeee;
+}</style>
+  </head>
+  <body>
+  <h1 class="text-center">ax<sup>2</sup>+bx+c=0</h1>
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+        <input type="number" id="a" class="form-control" placeholder="a=">
+    </div>
+    <div class="col-xs-4">
+        <input type="number" id="b" class="form-control" placeholder="b=">
+    </div>
+    <div class="col-xs-4">
+        <input type="number" id="c" class="form-control" placeholder="c=">
+    </div>
+  </div>
+  <br />
+  <div class="text-center">
+      <input type="button" id="solve" value="solve" class="btn btn-primary">
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xs-4">
+        <input type="text" id="d" class="form-control" placeholder="D=">
+    </div>
+    <div class="col-xs-4">
+        <input type="text" id="x1" class="form-control" placeholder="x1=">
+    </div>
+    <div class="col-xs-4">
+        <input type="text" id="x2" class="form-control" placeholder="x2=">
+    </div>
+  </div>
+  </div>
+  <script>$(document).ready(function() {
+   $("#solve").click(function() {
+   
+  var a=$("#a").val();
+  var b=$("#b").val();
+  var c=$("#c").val();
+  
+  $("#d").val("");
+  $("#x1").val("");
+  $("#x2").val("");
+  
+  if(a==="" || a==="0") {
+      $("#a").focus(); return;
+  }
+  if(b==="") {$("#b").focus(); return;}
+  if(c==="") {$("#c").focus(); return;}
+  
+  var d=(Math.pow(b, 2)-(4*a*c)).toFixed(2);
+  $("#d").val(d);
+  if(d<0) {
+      var x1=Math.sqrt(-d).toFixed(2)+"+i";
+      var x2=Math.sqrt(-d).toFixed(2)+"-i";
+  }
+  else {
+      var x1=((-b+Math.sqrt(d))/2*a).toFixed(2);
+      var x2=((-b-Math.sqrt(d))/2*a).toFixed(2);
+  }
+  $("#x1").val(x1);
+  $("#x2").val(x2);
+});
+});</script>
+  </body>
+</html>
